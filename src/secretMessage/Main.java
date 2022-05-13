@@ -1,21 +1,35 @@
 package secretMessage;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
 
-	public static void main (String[] args) {
+	public static void main (String[] args) throws Exception {
 		Scanner input = new Scanner(System.in);
+		System.out.println("Enter key: ");
+		String key = input.nextLine();
 		System.out.println("Hello! Would you like to encode or decode a message?");
-		String codeResponse = input.nextLine();
+		String encodeDecode = input.nextLine();
 		System.out.println("What is the name of the input file?");
 		String inputFileName = input.nextLine();
 		System.out.println("What is the name of output file?");
 		String outputFileName = input.nextLine();
+		Process myProcess = new Process();
+		myProcess.processFile(key, encodeDecode, inputFileName, outputFileName);
 	}
-	public static boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) throws Exception {
+}
+class Process {
+	public boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) throws Exception {
+		File myFile = new File("/secretMessage/src/secretMessage/input.txt");
+		Scanner myInput = new Scanner(myFile);
+		StringBuilder content = new StringBuilder();
+		while (myInput.hasNextLine()) {
+			content.append(myInput.nextLine());
+			System.out.println(content.toString());
+		}
 		try {
 			System.out.println(inputFileName);
 		}
