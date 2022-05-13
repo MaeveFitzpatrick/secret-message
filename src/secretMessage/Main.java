@@ -1,6 +1,8 @@
 package secretMessage;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main {
 
@@ -13,7 +15,13 @@ public class Main {
 		System.out.println("What is the name of output file?");
 		String outputFileName = input.nextLine();
 	}
-	public static boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) {
+	public static boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) throws Exception {
+		try {
+			System.out.println(inputFileName);
+		}
+		catch(Exception ex) {
+			
+		}
 		return true;
 	}
 
