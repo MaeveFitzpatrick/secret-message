@@ -26,9 +26,12 @@ class Process {
 		FileReader myFile = new FileReader("/secretMessage/src/secretMessage/input.txt");
 		StringBuilder content = new StringBuilder();
 		int i;
-		while ((i = myFile.read()) != -1) {
+		if ((i = myFile.read()) != -1) {
 			content.append((char) i);
+		if (i == -1)
+			return false;
 		}
+		
 		System.out.println(content.toString());
 		try {
 			System.out.println(inputFileName);
