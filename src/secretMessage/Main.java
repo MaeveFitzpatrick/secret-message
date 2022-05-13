@@ -23,13 +23,13 @@ public class Main {
 }
 class Process {
 	public boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) throws Exception {
-		File myFile = new File("/secretMessage/src/secretMessage/input.txt");
-		Scanner myInput = new Scanner(myFile);
+		FileReader myFile = new FileReader("/secretMessage/src/secretMessage/input.txt");
 		StringBuilder content = new StringBuilder();
-		while (myInput.hasNextLine()) {
-			content.append(myInput.nextLine());
-			System.out.println(content.toString());
+		int i;
+		while ((i = myFile.read()) != -1) {
+			content.append((char) i);
 		}
+		System.out.println(content.toString());
 		try {
 			System.out.println(inputFileName);
 		}
