@@ -19,26 +19,20 @@ public class Main {
 		String outputFileName = input.nextLine();
 		Process myProcess = new Process();
 		myProcess.processFile(key, encodeDecode, inputFileName, outputFileName);
+		
+		
+		callCaesar.CaesarDecode(0, 0);
 	}
 }
 class Process {
 	public boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) throws Exception {
-		FileReader myFile = new FileReader("/secretMessage/src/secretMessage/input.txt");
-		StringBuilder content = new StringBuilder();
-		int i;
-		if ((i = myFile.read()) != -1) {
-			content.append((char) i);
-		if (i == -1)
-			return false;
-		}
+		caesar callCaesar = new caesar();
+		//read file
+		//creates the file
+		java.io.File myFile = new java.io.File("input.txt");
+		//creates a scanner for the file
+		Scanner myInput = new Scanner(myFile);
 		
-		System.out.println(content.toString());
-		try {
-			System.out.println(inputFileName);
-		}
-		catch(Exception ex) {
-			
-		}
 		return true;
 	}
 
