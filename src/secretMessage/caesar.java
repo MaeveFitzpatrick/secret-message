@@ -1,5 +1,4 @@
 package secretMessage;
-
 public class caesar{
 /*********************************************************************
  * CaesarEncode implements the Caesar cipher encoding scheme.        *
