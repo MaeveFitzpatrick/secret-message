@@ -2,6 +2,7 @@ package secretMessage;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -25,17 +26,20 @@ class Process {
 	public boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) throws Exception {
 		//create file
 		File file = new File("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\input.txt");
-		//scan through each line
+		//read/scan through each line
 		Scanner scan = new Scanner(file);
 		//for as long as there is a next line, print the next line
 		String fileContent = "";
 		while (scan.hasNextLine()) {
-			
-			fileContent = fileContent.concat(scan.nextLine() + "/n");
-			//System.out.println(scan.nextLine());
+			fileContent = fileContent.concat(scan.nextLine() + "\n");
 		}
-		FileWriter writer = new FileWriter();
+		//writer
+		FileWriter writer = new FileWriter("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\output.txt");
+		writer.write(fileContent);
+		writer.close();
 		return true;
+		
+		
 	}
 
 }
