@@ -32,8 +32,6 @@ class Process {
 		File inputFile = new File("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\input.txt");
 		//a)read/scan through each line
 		Scanner scan = new Scanner(inputFile);
-		
-		
 		//while inputFile has another line, read/add next line.
 		while (scan.hasNextLine()) {
 			fileContent = fileContent.concat(scan.nextLine() + "\n");
@@ -43,7 +41,7 @@ class Process {
 			myCaesar.CaesarEncode(ch, 0);
 		//Are these the parameters?
 		if (encodeDecode == "decode")
-			myCaesar.CaesarEncode(ch, 0);
+			myCaesar.CaesarDecode(ch, 0);
 		
 		//d) writer
 		FileWriter writer = new FileWriter("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\output.txt");
