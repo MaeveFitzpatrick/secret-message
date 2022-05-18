@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -24,18 +25,26 @@ public class Main {
 }
 class Process {
 	public boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) throws Exception {
-		caesar myCaesar = new caesar();
-		char ch = 0;
-		String fileContent = "";
-		try {
 		//create input.txt file
 		File inputFile = new File("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\input.txt");
+		FileReader fileReader = new FileReader(inputFile);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+		int ch = 0;
+		while((ch = bufferedReader.read()) != -1) {
+			char character = (char) ch;
+			System.out.println(character);
+		}
+		caesar myCaesar = new caesar();
+		
+		/*String fileContent = "";
+		try {
 		//a)read/scan through each line
 		Scanner scan = new Scanner(inputFile);
 		//while inputFile has another line, read/add next line.
 		while (scan.hasNextLine()) {
 			fileContent = fileContent.concat(scan.nextLine() + "\n");
 			}
+			*/
 		//c)
 		if (encodeDecode == "encode")
 			myCaesar.CaesarEncode(ch, 0);
