@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class Main {
 
@@ -25,45 +24,35 @@ public class Main {
 }
 class Process {
 	public boolean processFile(String key, String encodeDecode, String inputFileName, String outputFileName) throws Exception {
-		//create input.txt file
-		File inputFile = new File("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\input.txt");
-		FileReader fileReader = new FileReader(inputFile);
-		BufferedReader bufferedReader = new BufferedReader(fileReader);
-		int ch = 0;
-		while((ch = bufferedReader.read()) != -1) {
-			char character = (char) ch;
-			System.out.println(character);
-		}
 		caesar myCaesar = new caesar();
-		
-		/*String fileContent = "";
+		char character = 0;
+		final int secretKey = 12;
+		String fileContent = "";
 		try {
-		//a)read/scan through each line
-		Scanner scan = new Scanner(inputFile);
-		//while inputFile has another line, read/add next line.
-		while (scan.hasNextLine()) {
-			fileContent = fileContent.concat(scan.nextLine() + "\n");
+			File inputFile = new File("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\input.txt");
+			FileReader fileReader = new FileReader(inputFile);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			int cha = 0;
+			while((cha = bufferedReader.read()) != -1) {
+				character = (char) cha;
+				if (encodeDecode.equals("encode"))
+					character = myCaesar.CaesarEncode(character, secretKey);
+				if (encodeDecode.equals("decode"))
+					character = myCaesar.CaesarDecode(character, secretKey);
+				fileContent = fileContent + character;
 			}
-			*/
-		//c)
-		if (encodeDecode == "encode")
-			myCaesar.CaesarEncode(ch, 0);
-		//Are these the parameters?
-		if (encodeDecode == "decode")
-			myCaesar.CaesarDecode(ch, 0);
-		
-		//d) writer
-		FileWriter writer = new FileWriter("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\output.txt");
-		writer.write(fileContent);
-		writer.close();
-		//b)if end-of-file is reached, terminate.
-		if (scan.hasNextLine() == false) {
-				scan.close();
-		}
-		}
-		catch (FileNotFoundException ex) {
-			System.out.println("Error. FileNotFound.");
-		}
+			FileWriter writer = new FileWriter("\\Users\\jucar\\Desktop\\secretMessage\\src\\secretMessage\\output.txt");
+				for (int i =0; i < fileContent.length(); i++)
+					writer.write(fileContent.charAt(i));
+					writer.close();
+				if (cha == -1) {
+						fileReader.close();
+				}
+				}
+				catch (FileNotFoundException ex) {
+					System.out.println("Error. FileNotFound.");
+				}
+				
 		return true;
 	}
 }
